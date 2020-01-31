@@ -14,6 +14,8 @@ namespace ToDoApp.Wpf
             InitializeComponent();
         }
 
+
+
         private void OnAddTodoTaskButtonClick(object sender, RoutedEventArgs e)
         {
             TodoTask item = new TodoTask();
@@ -38,6 +40,11 @@ namespace ToDoApp.Wpf
         {
             // selected index to remove cannot be less than 0 or greater than item count
             return (selectedIndex >= 0 && selectedIndex < TodoTaskListView.Items.Count);
+        }
+
+        private void TodoTaskNameText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

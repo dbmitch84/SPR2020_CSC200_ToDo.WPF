@@ -8,6 +8,7 @@
     Title="CSC200 Todo Task App"
     Width="800"
     Height="450"
+    Background="#FFB9EFE9"
     mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
@@ -26,14 +27,17 @@
             Margin="2"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
+            Background="#FFF5EBF9"
             BorderBrush="DarkGray"
             BorderThickness="1"
-            FontSize="18" />
+            FontSize="18"
+            TextChanged="TodoTaskNameText_TextChanged" />
         <Button
             x:Name="AddTodoTaskButton"
             Grid.Row="0"
             Grid.Column="1"
             Margin="2"
+            Background="#FF54E4B2"
             Click="OnAddTodoTaskButtonClick"
             Content="Add" />
         <ListView
@@ -41,14 +45,18 @@
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
+            Background="#FFF7EBFF"
             BorderBrush="DarkGray"
-            BorderThickness="1" SelectionChanged="OnTodoTaskListViewSelectionChanged">
+            BorderThickness="1"
+            SelectionChanged="OnTodoTaskListViewSelectionChanged">
 
             <ListView.ItemTemplate>
                 <DataTemplate DataType="models:TodoTask">
                     <Grid>
+
                         <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal">
                             <!--  todo: add checkbox for IsCompleted property  -->
+                            <CheckBox IsChecked="True" IsThreeState="False" />
                             <TextBox
                                 x:Name="TodoTaskItemNameText"
                                 HorizontalAlignment="Stretch"
@@ -65,6 +73,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Margin="2"
+            Background="#FFF76C6C"
             Click="OnRemoveTodoTaskButtonClick"
             Content="Remove"
             IsEnabled="False" />
