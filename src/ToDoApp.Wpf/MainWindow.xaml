@@ -20,6 +20,42 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
+
+        <!--  File Save Menu Bar  -->
+
+        <Menu
+            Name="menu1"
+            Grid.Row="1"
+            Grid.Column="1"
+            Width="96"
+            Height="46"
+            Margin="2"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FFD97BEF">
+            <MenuItem
+                HorizontalContentAlignment="Center"
+                FontWeight="Bold"
+                Header="_File">
+                <MenuItem Click="FileOpen_Click" Header="_Open" />
+                <MenuItem Header="_Close" />
+                <MenuItem Click="FileSave_Click" Header="_Save" />
+            </MenuItem>
+        </Menu>
+        <!--<muxc:MenuBar>
+    <muxc:MenuBarItem Title="File">
+        <MenuFlyoutSubItem Text="New">
+            <MenuFlyoutItem Text="Plain Text Document"/>
+            <MenuFlyoutItem Text="Rich Text Document"/>
+            <MenuFlyoutItem Text="Other Formats..."/>
+        </MenuFlyoutSubItem>
+        <MenuFlyoutItem Text="Open..."/>
+        <MenuFlyoutItem Text="Save"/>
+        <MenuFlyoutSeparator />
+        <MenuFlyoutItem Text="Exit"/>
+    </muxc:MenuBarItem>
+            </muxc:MenuBar>
+          Text box you type into-->
         <TextBox
             x:Name="TodoTaskNameText"
             Grid.Row="0"
@@ -27,11 +63,13 @@
             Margin="2"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
-            Background="#FFF5EBF9"
+            Background="#FFF9F5EB"
             BorderBrush="DarkGray"
             BorderThickness="1"
             FontSize="18"
             TextChanged="TodoTaskNameText_TextChanged" />
+
+        <!--  "Add" button  -->
         <Button
             x:Name="AddTodoTaskButton"
             Grid.Row="0"
@@ -39,12 +77,15 @@
             Margin="2"
             Background="#FF54E4B2"
             Click="OnAddTodoTaskButtonClick"
-            Content="Add" />
+            Content="Add"
+            FontWeight="Bold" />
+
+        <!--  List you've created  -->
         <ListView
             x:Name="TodoTaskListView"
             Grid.Row="1"
             Grid.Column="0"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="1"
             Background="#FFF7EBFF"
             BorderBrush="DarkGray"
             BorderThickness="1"
@@ -67,6 +108,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <!--  "Remove" button  -->
         <Button
             x:Name="RemoveTodoTaskButton"
             Grid.Row="2"

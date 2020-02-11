@@ -1,4 +1,8 @@
 ﻿using System.Windows;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Diagnostics;
 using System.Windows.Controls;
 using ToDoApp.Wpf.Models;
 
@@ -12,6 +16,8 @@ namespace ToDoApp.Wpf
         public MainWindow()
         {
             InitializeComponent();
+            
+
         }
 
 
@@ -46,5 +52,83 @@ namespace ToDoApp.Wpf
         {
 
         }
+
+        private void FileSave_Click(object sender, RoutedEventArgs e)
+        {
+            string path = "output.txt";
+            if (System.IO.File.Exists(path))
+            {
+                File.Delete(path); //deletes the old file, creating a new list
+
+                System.IO.FileStream fileStream = System.IO.File.Open(
+                path,
+                System.IO.FileMode.Append,
+                System.IO.FileAccess.Write,
+                System.IO.FileShare.None);
+                System.IO.StreamWriter writer = new System.IO.StreamWriter(fileStream);
+
+                foreach (var item in TodoTaskListView.Items)
+                {
+                    TodoTask listitem = item as TodoTask;
+                    writer.WriteLine(listitem.Description);
+                }
+
+                writer.Close();
+                fileStream.Close();
+
+
+            }
+            else
+            {
+
+                System.IO.StreamWriter writer = new System.IO.StreamWriter(path);
+
+                foreach (var item in TodoTaskListView.Items)
+                {
+                    TodoTask listitem = item as TodoTask;
+                    writer.WriteLine(listitem.Description);
+                }
+
+                writer.Close();
+            }
+
+
+        }
+
+        private void FileOpen_Click(object sender, RoutedEventArgs e)
+        {
+            string path = "output.txt";
+
+            using (FileStream fs = File.OpenRead(path))
+            {
+                byte[] b = new byte[1024];
+                UTF8Encoding temp = new UTF8Encoding(true);
+                while (fs.Read(b, 0, b.Length) > 0)
+                {
+                    System.Console.WriteLine(temp.GetString(b));
+                }
+            }
+            /*if (System.IO.File.Exists(path))
+            {
+                System.IO.FileStream fileStream = System.IO.File.Open(
+                path,
+                System.IO.FileMode.Open,
+                System.IO.FileAccess.Read,
+                System.IO.FileShare.None);
+                System.IO.StreamReader reader = new System.IO.StreamReader(fileStream);
+                while (reader.EndOfStream == false)
+                {
+                    string line = reader.ReadLine();
+                    System.Console.WriteLine(line);
+                }
+                reader.Close();
+                fileStream.Close();
+
+            }*/
+
+
+
+        }
     }
 }
+    
