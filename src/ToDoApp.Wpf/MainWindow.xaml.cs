@@ -86,7 +86,8 @@ namespace ToDoApp.Wpf
                 foreach (var item in TodoTaskListView.Items)
                 {
                     TodoTask listitem = item as TodoTask;
-                    writer.WriteLine(listitem.Description);
+                    writer.WriteLine(listitem.Description); 
+                    //
                 }
 
                 writer.Close();
