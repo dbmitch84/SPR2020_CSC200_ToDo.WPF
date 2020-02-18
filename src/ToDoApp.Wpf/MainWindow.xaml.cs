@@ -99,16 +99,8 @@ namespace ToDoApp.Wpf
         {
             string path = "output.txt";
 
-            using (FileStream fs = File.OpenRead(path))
-            {
-                byte[] b = new byte[1024];
-                UTF8Encoding temp = new UTF8Encoding(true);
-                while (fs.Read(b, 0, b.Length) > 0)
-                {
-                    System.Console.WriteLine(temp.GetString(b));
-                }
-            }
-            /*if (System.IO.File.Exists(path))
+       
+            if (System.IO.File.Exists(path))
             {
                 System.IO.FileStream fileStream = System.IO.File.Open(
                 path,
@@ -119,12 +111,14 @@ namespace ToDoApp.Wpf
                 while (reader.EndOfStream == false)
                 {
                     string line = reader.ReadLine();
-                    System.Console.WriteLine(line);
+                    TodoTask item = new TodoTask();
+                    item.Description = line;
+                    TodoTaskListView.Items.Add(item);
                 }
                 reader.Close();
                 fileStream.Close();
 
-            }*/
+            }
 
 
 
