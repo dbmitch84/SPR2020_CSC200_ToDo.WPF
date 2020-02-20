@@ -39,7 +39,7 @@
                 Header="_File">
                 <MenuItem Click="FileOpen_Click" Header="_Open" />
                 <MenuItem Header="_Close" />
-                <MenuItem Click="FileSave_Click" Header="_Save" />
+                <MenuItem Click="FileSave_Click" Header="_Save As" />
             </MenuItem>
         </Menu>
         <!--<muxc:MenuBar>
