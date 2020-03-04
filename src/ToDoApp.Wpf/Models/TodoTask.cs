@@ -6,6 +6,9 @@
     [System.Serializable]
     public class TodoTask
     {
+       public System.DateTime DueBy { get; set; }
+        public System.DateTime CompletedOn { get; set; }
+        public bool IsComplete { get; set; }
         public string Description { get; set; }
 
         // NOTE: to use binary or soap formatting for serialization the [Serializable] attribute is required
